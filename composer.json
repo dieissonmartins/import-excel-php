@@ -1,0 +1,16 @@
+{
+    "name": "dieissonmartins/import-excel-php",
+    "description": "Sistema que importa Excel para uma base de dados",
+    "authors": [
+        {
+            "name": "Dieisson Martins",
+            "email": "dieisson.martins.santos@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    }
+}
