@@ -5,7 +5,12 @@ class ProductController
 {
     public function index()
     {
-        return "namespace TRUE";
+        try{
+			return "namespace TRUE";
+
+		} catch (\Exception $e) {
+            return "namespace FALSE";
+		}
     }
 }
 ?>
