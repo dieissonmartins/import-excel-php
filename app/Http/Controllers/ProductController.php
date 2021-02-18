@@ -14,12 +14,13 @@ class ProductController
 		}
     }
 
-    public function import($data)
+    public function import()
     {
-        try{
-            echo "import";
-            var_dump($data);
+        $file = $_FILES['worksheet'];
 
+        try{
+            var_dump($file);
+            
 		} catch (\Exception $e) {
             echo json_encode($e);
 		}

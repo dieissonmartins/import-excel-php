@@ -22,8 +22,8 @@
                     <div class="row gx-5">
                         <div class="col">
                             <div class="input-group mb-3 p-3">
-                                <form action="http://localhost/import-excel-php/public/products/import" method="post">
-                                    <input type="file" name="worksheet" class="form-control">
+                                <form action="http://localhost/import-excel-php/public/products/import" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="worksheet" class="form-control" accept=".xls,.xlsx">
                                     <button class="btn btn-outline-secondary input-group-text btn-info" type="submit">Importar</button>
                                 </form>
                             </div>
