@@ -6,10 +6,22 @@ class ProductController
     public function index()
     {
         try{
-			return "namespace TRUE";
+			$varteste = "Dieisson Martins";
+            require_once __DIR__."/../../../src/views/admin/products/index.php";
 
 		} catch (\Exception $e) {
-            return "namespace FALSE";
+            echo json_encode($e);
+		}
+    }
+
+    public function import($data)
+    {
+        try{
+            echo "import";
+            var_dump($data);
+
+		} catch (\Exception $e) {
+            echo json_encode($e);
 		}
     }
 }
