@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Services\ProductService;
+
 class ProductController 
 {
     public function index()
@@ -19,8 +21,8 @@ class ProductController
         $file = $_FILES['worksheet'];
 
         try{
-            var_dump($file);
-            
+            ProductService::import($file);
+
 		} catch (\Exception $e) {
             echo json_encode($e);
 		}
