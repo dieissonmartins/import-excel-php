@@ -21,7 +21,7 @@ class ProductController
         $file = $_FILES['worksheet'];
 
         try{
-            ProductService::import($file);
+            ProductService::importExcel($file);
 
 		} catch (\Exception $e) {
             echo json_encode($e);
