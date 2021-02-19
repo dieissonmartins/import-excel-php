@@ -6,9 +6,6 @@ class ProductService
 {
     public static function importExcel($file)
     {
-        $fileteste = 'http://localhost/import-excel-php/fileTeste/Planilha1.xlsx';
-        var_dump($file['tmp_name']);
-
         try{
             $fileType       = \PHPExcel_IOFactory::identify($file['tmp_name']);
             $objReader      = \PHPExcel_IOFactory::createReader($fileType);
@@ -21,9 +18,13 @@ class ProductService
         $sheet              = $objPHPExcel->setActiveSheetIndex(0);
         $highestRow         = $sheet->getHighestRow(); 
         $highestColumn      = $sheet->getHighestColumn();
+        $headingsArray      = $sheet->rangeToArray('A1:'.$highestColumn.$highestRow,null, true, true, true);
+
+        $data = array_map("array_filter", $headingsArray);
+        $data = array_filter($data);
+        unset($data[1]);
         
-        $headingsArray = $sheet->rangeToArray('A1:'.$highestColumn.$highestRow,null, true, true, true);
-        var_dump($headingsArray[1]);
+        var_dump($data);
 
         for($row = 1; $row <= $highestRow; $row++){
             //$rowData = $sheetToArray('A'.$row.':'.$highestColumn.$row,NULL,TRUE,FALSE);
