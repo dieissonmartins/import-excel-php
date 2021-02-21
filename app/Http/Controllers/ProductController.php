@@ -8,7 +8,8 @@ class ProductController
     public function index()
     {
         try{
-			$varteste = "Dieisson Martins";
+			$products = ProductService::findAllProducts();
+
             require_once __DIR__."/../../../src/views/admin/products/index.php";
 
 		} catch (\Exception $e) {

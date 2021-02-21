@@ -3,9 +3,27 @@ namespace App\Http\Services;
 //use moonland\phpexcel\PHPExcel_IOFactory;
 
 use Src\database\Connection;
+use PDO;
 
 class ProductService 
 {
+    public static function findAllProducts()
+    {
+        try{
+            $sql = "SELECT * FROM tb_products";
+
+            $products   = Connection::open('env')->prepare($sql);
+            $products->execute();
+            
+            $result = $products->fetchAll();
+            return $result;
+            
+		} catch (\Exception $e) {
+            die("Error: ".$e);
+		}
+
+    }
+
     public static function importExcel($file)
     {
         try{
@@ -32,12 +50,12 @@ class ProductService
             $product_name       = $product['B'];
             $price              = (float) str_replace('R$ ','', $product['C']);
             $inventory          = $product['D'];
-            //$date_fabrication   =  date_create_from_format("m-d-Y", $product['E'])->format("Y-m-d");
+            $date_fabrication   =  date_create_from_format("m-d-Y", $product['E'])->format("Y-m-d");
             
-            $sql = "INSERT INTO tb_products(ean, product_name, price, inventory, date_fabrication)
-                    VALUES ($ean, '$product_name', $price, $inventory,'')";
+            echo $sql = "INSERT INTO tb_products(ean, product_name, price, inventory, date_fabrication)
+                    VALUES ($ean, '$product_name', $price, $inventory,$date_fabrication)";
 
-            Connection::open('env')->exec($sql);
+            //Connection::open('env')->exec($sql);
         }
     }
 }

@@ -13,7 +13,6 @@ class Connection{
 		if (file_exists(__DIR__."/../config/{$name}.ini")){
 			
 			$db = parse_ini_file(__DIR__."/../config/{$name}.ini");
-            var_dump($db);
 		}else{
 			throw new Exception("Arquivo '$name' não encotrado", 1);
 			

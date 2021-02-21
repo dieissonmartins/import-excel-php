@@ -15,28 +15,32 @@
     <div class="container pt-5">
         <div class="card">
             <div class="card-header bg-secondary text-white font-weight-bold text-uppercase">
-                Importação de dados Excel <?php echo $varteste; ?>
+                Importação de dados Excel
             </div>
             <div class="card-body">
-                <div class="container px-4">
-                    <div class="row gx-5">
-                        <div class="col">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm">
                             <div class="input-group mb-3 p-3">
-                                <form action="http://localhost/import-excel-php/public/products/import" method="post" enctype="multipart/form-data">
-                                    <input type="file" name="worksheet" class="form-control" accept=".xls,.xlsx">
-                                    <button class="btn btn-outline-secondary input-group-text btn-info" type="submit">Importar</button>
+                                <form action="http://localhost/import-excel-php/public/products/import" method="post" enctype="multipart/form-data">    
+                                    <div class="input-group mb-3">
+                                        <input type="file" name="worksheet" class="form-control" accept=".xls,.xlsx">
+                                        <button class="btn btn-outline-secondary btn-info" type="submit">Importar</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
-                        <div class="col">
-                            <div class="input-group mb-3 p-3">
+                        
+                        <div class="col-sm">
+                            <div class="mb-3 p-3 float-right">
                                 <button type="button" class="btn btn-danger float-right">Logout</button>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row gx-5">
                         <div class="col">
-                            <table class="table">
+                            <table class="table table-bordered table-striped text-center">
                                 <thead class="table-light">
                                     <tr>
                                         <th scope="col">AÇÃO</th>
@@ -48,30 +52,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    <td>@mdo</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>Thornton</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    </tr>
-                                    <tr>
-                                    <th scope="row">3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>the Bird</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                    </tr>
+                                    <?php foreach($products as $product): ?>
+                                        <tr>
+                                            <th><button type="button" class="btn btn-outline-secondary">Remover</button></th>
+                                            <td><?= $product['ean'] ?></td>
+                                            <td><?= $product['product_name'] ?></td>
+                                            <td><?= $product['price'] ?></td>
+                                            <td><?= $product['inventory'] ?></td>
+                                            <td><?= $product['date_fabrication'] ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
