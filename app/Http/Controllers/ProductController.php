@@ -12,7 +12,7 @@ class ProductController
             require_once __DIR__."/../../../src/views/admin/products/index.php";
 
 		} catch (\Exception $e) {
-            echo json_encode($e);
+                die("Error: ".$e);
 		}
     }
 
@@ -24,7 +24,7 @@ class ProductController
             ProductService::importExcel($file);
 
 		} catch (\Exception $e) {
-            echo json_encode($e);
+                die("Error: ".$e);
 		}
     }
 }

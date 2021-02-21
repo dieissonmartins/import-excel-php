@@ -2,6 +2,8 @@
 namespace App\Http\Services;
 //use moonland\phpexcel\PHPExcel_IOFactory;
 
+use Src\database\Connection;
+
 class ProductService 
 {
     public static function importExcel($file)
@@ -23,18 +25,20 @@ class ProductService
         $data = array_map("array_filter", $headingsArray);
         $data = array_filter($data);
         unset($data[1]);
-        
-        var_dump($data);
 
-        for($row = 1; $row <= $highestRow; $row++){
-            //$rowData = $sheetToArray('A'.$row.':'.$highestColumn.$row,NULL,TRUE,FALSE);
+        foreach ($data as $product) {
             
-            //if($row == 1) continue;
+            $ean                = $product['A']; 
+            $product_name       = $product['B'];
+            $price              = (float) str_replace('R$ ','', $product['C']);
+            $inventory          = $product['D'];
+            //$date_fabrication   =  date_create_from_format("m-d-Y", $product['E'])->format("Y-m-d");
+            
+            $sql = "INSERT INTO tb_products(ean, product_name, price, inventory, date_fabrication)
+                    VALUES ($ean, '$product_name', $price, $inventory,'')";
 
-            //var_dump($rowData);
+            Connection::open('env')->exec($sql);
         }
-
-        echo "camada de serviço";
     }
 }
 ?>

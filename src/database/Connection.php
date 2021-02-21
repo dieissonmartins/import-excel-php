@@ -7,12 +7,12 @@ use Exception;
 
 class Connection{
 	
-	public function open($name){
+	public static function open($name){
 
 		//verifica se existe arquivo de configuração para este banco de dados
-		if (file_exists("../config/{$name}.ini")){
+		if (file_exists(__DIR__."/../config/{$name}.ini")){
 			
-			$db = parse_ini_file("../config/{$name}.ini");
+			$db = parse_ini_file(__DIR__."/../config/{$name}.ini");
             var_dump($db);
 		}else{
 			throw new Exception("Arquivo '$name' não encotrado", 1);
@@ -35,7 +35,7 @@ class Connection{
                     $port = $port ? $port : '3306';
 				    $conn = new PDO("mysql:host={$host};port={$port};dbname={$name}",$user,$pass);
                     
-                    echo "Conectado no Banco de Dados...";
+                    //echo "Conectado no Banco de Dados...";
                 }
                 catch(PDOException $e){
                 
@@ -49,6 +49,3 @@ class Connection{
 		return $conn;
 	}
 }
-
-$conTeste = new Connection();
-$conTeste->open('env');
