@@ -50,12 +50,12 @@ class ProductService
             $product_name       = $product['B'];
             $price              = (float) str_replace('R$ ','', $product['C']);
             $inventory          = $product['D'];
-            $date_fabrication   =  date_create_from_format("m-d-Y", $product['E'])->format("Y-m-d");
-            
-            echo $sql = "INSERT INTO tb_products(ean, product_name, price, inventory, date_fabrication)
-                    VALUES ($ean, '$product_name', $price, $inventory,$date_fabrication)";
+            $date_fabrication   = date('Y-m-d', strtotime($product['E']));
 
-            //Connection::open('env')->exec($sql);
+            $sql = "INSERT INTO tb_products(ean, product_name, price, inventory, date_fabrication)
+                    VALUES ($ean, '$product_name', $price, $inventory,'$date_fabrication')";
+
+            Connection::open('env')->exec($sql);
         }
     }
 }
