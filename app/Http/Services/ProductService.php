@@ -1,12 +1,13 @@
 <?php
 namespace App\Http\Services;
-//use moonland\phpexcel\PHPExcel_IOFactory;
 
+use App\Http\Requests\ProductRequest;
 use Src\database\Connection;
 use PDO;
 
 class ProductService 
 {
+
     public static function findAllProducts()
     {
         try{
@@ -40,9 +41,7 @@ class ProductService
         $highestColumn      = $sheet->getHighestColumn();
         $headingsArray      = $sheet->rangeToArray('A1:'.$highestColumn.$highestRow,null, true, true, true);
 
-        $data = array_map("array_filter", $headingsArray);
-        $data = array_filter($data);
-        unset($data[1]);
+        $data = ProductRequest::validation($headingsArray);
 
         foreach ($data as $product) {
             

@@ -32,6 +32,8 @@ class ProductController
 		} catch (\Exception $e) {
                 die("Error: ".$e);
 		}
+
+        return $this->router->redirect("product.index");
     }
 
     public function destroy($id)

@@ -1,7 +1,7 @@
 <?php 
 use CoffeeCode\Router\Router;
 
-$router = new Router("http://localhost/import-excel-php/public/");
+$router = new Router($application['APP_URL']);
 
 //Controllers
 $router->namespace("App\Http\Controllers");
@@ -14,12 +14,6 @@ $router->get("/",                       "HomeController:index",             "hom
 $router->get("/products",               "ProductController:index",          "product.index");
 $router->post("/products/import",       "ProductController:import",         "product.import");
 $router->get("/products/delete/{id}",   "ProductController:destroy",        "product.destroy");
-
-/*
-$router->get("/", function () {
-    echo "teste";
-});
-*/
 
 $router->dispatch();
 ?>
