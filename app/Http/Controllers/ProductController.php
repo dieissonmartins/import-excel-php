@@ -33,7 +33,7 @@ class ProductController
                 die("Error: ".$e);
 		}
 
-        return $this->router->redirect("product.index");
+        //return $this->router->redirect("product.index");
     }
 
     public function destroy($id)
