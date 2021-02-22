@@ -11,6 +11,7 @@ $router->get("/login",                  "LoginController:login");
 $router->post("/login",                 "LoginController:authentication");
 $router->get("/logout",                 "LoginController:logout");
 
+$router->get("/",                       "HomeController:index");
 $router->get("/products",               "ProductController:index");
 $router->post("/products/import",       "ProductController:import");
 $router->get("/products/delete/{id}",   "ProductController:destroy");

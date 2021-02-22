@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Services\LoginService;
+
 class LoginController 
 {
     public function login()
@@ -13,11 +15,10 @@ class LoginController
 		}
     }
 
-    public function authentication()
+    public function authentication($data)
     {
         try{
-            echo "view authentication";
-            //require_once __DIR__."/../../../src/views/auth/login.php";
+            $login = LoginService::authentication($data);
 
 		} catch (\Exception $e) {
                 die("Error: ".$e);
