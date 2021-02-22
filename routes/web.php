@@ -10,10 +10,10 @@ $router->get("/login",                  "LoginController:login",            "aut
 $router->post("/login",                 "LoginController:authentication",   "auth.authentication");
 $router->get("/logout",                 "LoginController:logout",           "auth.logout");
 
-$router->get("/",                       "HomeController:index");
-$router->get("/products",               "ProductController:index");
-$router->post("/products/import",       "ProductController:import");
-$router->get("/products/delete/{id}",   "ProductController:destroy");
+$router->get("/",                       "HomeController:index",             "home.index");
+$router->get("/products",               "ProductController:index",          "product.index");
+$router->post("/products/import",       "ProductController:import",         "product.import");
+$router->get("/products/delete/{id}",   "ProductController:destroy",        "product.destroy");
 
 /*
 $router->get("/", function () {

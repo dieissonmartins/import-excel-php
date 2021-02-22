@@ -10,7 +10,7 @@
                     <div class="row">
                         <div class="col-sm">
                             <div class="input-group mb-3 p-3">
-                                <form action="http://localhost/import-excel-php/public/products/import" method="post" enctype="multipart/form-data">    
+                                <form action="<?= $this->router->route("product.import") ?>" method="post" enctype="multipart/form-data">    
                                     <div class="input-group mb-3">
                                         <input type="file" name="worksheet" class="form-control" accept=".xls,.xlsx">
                                         <button class="btn btn-outline-secondary btn-info" type="submit">Importar</button>
@@ -43,7 +43,7 @@
                                 <tbody>
                                     <?php foreach($products as $product): ?>
                                         <tr>
-                                            <td><a href="http://localhost/import-excel-php/public/products/delete/<?= $product['ean']?>" class="btn btn-outline-secondary">Remover</a></td>
+                                            <td><a href="<?= $this->router->route("product.destroy", ["id" => $product['ean']]) ?>" class="btn btn-outline-secondary">Remover</a></td>
                                             <td><?= $product['ean'] ?></td>
                                             <td><?= $product['product_name'] ?></td>
                                             <td><?= "R$".number_format($product['price'], 2, ',', '') ?></td>

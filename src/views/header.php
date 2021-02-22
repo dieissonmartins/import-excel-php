@@ -1,7 +1,12 @@
 <?php
 session_start();
-//(!isset($_SESSION['name']))? header('Location:http://localhost/import-excel-php/public/login'):'';
+
+$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+if($this->router->route("auth.login") !== $actual_link)
+  (!isset($_SESSION['name']))? header('Location:'.$this->router->route("auth.login")):'';
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>

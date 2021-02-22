@@ -7,7 +7,7 @@
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-title">Produtos</h5>
-                    <a href="http://localhost/import-excel-php/public/products" class="card-link">Ver todos</a>
+                    <a href="<?= $this->router->route("product.index") ?>" class="card-link">Ver todos</a>
                 </div>
             </div>
         </div>
