@@ -54,7 +54,7 @@
                                 <tbody>
                                     <?php foreach($products as $product): ?>
                                         <tr>
-                                            <th><button type="button" class="btn btn-outline-secondary">Remover</button></th>
+                                            <td><a href="http://localhost/import-excel-php/public/products/delete/<?= $product['ean']?>" class="btn btn-outline-secondary">Remover</a></td>
                                             <td><?= $product['ean'] ?></td>
                                             <td><?= $product['product_name'] ?></td>
                                             <td><?= $product['price'] ?></td>

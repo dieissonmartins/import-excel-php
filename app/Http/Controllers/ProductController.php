@@ -28,5 +28,16 @@ class ProductController
                 die("Error: ".$e);
 		}
     }
+
+    public function destroy($id)
+    {
+        try{
+            $product = ProductService::destroy($id);
+            //require_once __DIR__."/../../../src/views/admin/products/index.php";
+
+		} catch (\Exception $e) {
+                die("Error: ".$e);
+		}
+    }
 }
 ?>

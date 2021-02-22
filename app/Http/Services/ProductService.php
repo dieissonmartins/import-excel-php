@@ -58,5 +58,17 @@ class ProductService
             Connection::open('env')->exec($sql);
         }
     }
+
+    public static function destroy($id)
+    {
+        try{
+           $sql        = "DELETE FROM tb_products WHERE ean =  $id";   
+           $product    = Connection::open('env')->exec($sql);
+
+		} catch (\Exception $e) {
+            die("Error: ".$e);
+		}
+
+    }
 }
 ?>
