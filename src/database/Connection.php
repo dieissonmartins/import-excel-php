@@ -6,15 +6,17 @@ use PDO;
 use Exception;
 
 class Connection{
-	
-	public static function open($name){
+
+	public static function open(){
+
+		$fileName = "env"; 
 
 		//verifica se existe arquivo de configuração para este banco de dados
-		if (file_exists(__DIR__."/../config/{$name}.ini")){
+		if (file_exists(__DIR__."/../config/{$fileName}.ini")){
 			
-			$db = parse_ini_file(__DIR__."/../config/{$name}.ini");
+			$db = parse_ini_file(__DIR__."/../config/{$fileName}.ini");
 		}else{
-			throw new Exception("Arquivo '$name' não encotrado", 1);
+			throw new Exception("Arquivo '$fileName' não encotrado", 1);
 			
 		}
 

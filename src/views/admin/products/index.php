@@ -21,7 +21,7 @@
                         
                         <div class="col-sm">
                             <div class="mb-3 p-3 float-right">
-                                <button type="button" class="btn btn-danger float-right">Logout</button>
+                                <button type="button" class="btn btn-danger float-right" style="float: right;">Logout</button>
                             </div>
                         </div>
                     </div>
@@ -45,9 +45,9 @@
                                             <td><a href="http://localhost/import-excel-php/public/products/delete/<?= $product['ean']?>" class="btn btn-outline-secondary">Remover</a></td>
                                             <td><?= $product['ean'] ?></td>
                                             <td><?= $product['product_name'] ?></td>
-                                            <td><?= $product['price'] ?></td>
+                                            <td><?= "R$".number_format($product['price'], 2, ',', '') ?></td>
                                             <td><?= $product['inventory'] ?></td>
-                                            <td><?= $product['date_fabrication'] ?></td>
+                                            <td><?= date_format( date_create($product['date_fabrication']),"d/m/Y") ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>

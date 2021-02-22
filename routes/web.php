@@ -16,7 +16,6 @@ $router->get("/products",               "ProductController:index");
 $router->post("/products/import",       "ProductController:import");
 $router->get("/products/delete/{id}",   "ProductController:destroy");
 
-
 /*
 $router->get("/", function () {
     echo "teste";

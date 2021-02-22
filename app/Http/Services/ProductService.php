@@ -12,7 +12,7 @@ class ProductService
         try{
             $sql = "SELECT * FROM tb_products";
 
-            $products   = Connection::open('env')->prepare($sql);
+            $products   = Connection::open()->prepare($sql);
             $products->execute();
             
             $result = $products->fetchAll();
@@ -55,7 +55,7 @@ class ProductService
             echo $sql = "INSERT INTO tb_products(ean, product_name, price, inventory, date_fabrication)
                     VALUES ($ean, '$product_name', $price, $inventory,'$date_fabrication')";
 
-            Connection::open('env')->exec($sql);
+            Connection::open()->exec($sql);
         }
     }
 
@@ -63,7 +63,7 @@ class ProductService
     {
         try{
            $sql        = "DELETE FROM tb_products WHERE ean =  $id";   
-           $product    = Connection::open('env')->exec($sql);
+           $product    = Connection::open()->exec($sql);
 
 		} catch (\Exception $e) {
             die("Error: ".$e);
