@@ -5,9 +5,16 @@ use App\Http\Services\LoginService;
 
 class LoginController 
 {
+    public function __construct($router)
+    {
+        $this->router = $router;
+    }
+
     public function login()
     {
         try{
+            //$this->router->route("auth.login");
+
             require_once __DIR__."/../../../src/views/auth/login.php";
 
 		} catch (\Exception $e) {
@@ -28,11 +35,12 @@ class LoginController
     public function logout()
     {
         try{
-            echo "view logout";
-            //require_once __DIR__."/../../../src/views/auth/login.php";
+            $logout = LoginService::logout();
 
 		} catch (\Exception $e) {
                 die("Error: ".$e);
 		}
+
+        return  $this->router->redirect("auth.login");
     }
 }

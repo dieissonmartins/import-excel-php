@@ -5,6 +5,11 @@ use App\Http\Services\ProductService;
 
 class ProductController 
 {
+    public function __construct($router)
+    {
+        $this->router = $router;
+    }
+    
     public function index()
     {
         try{

@@ -9,8 +9,38 @@ class LoginService
     public static function authentication($data)
     {
         try{
-            var_dump($data);
-            echo "view authentication";
+            $email      = $data['email'];
+            $password   = $data['password'];
+
+            $sql = "SELECT * FROM tb_users WHERE email = '$email' AND password = '$password'";
+
+            $session   = Connection::open()->prepare($sql);
+            $session->execute();
+            
+            $results = $session->fetchAll();
+            
+            if($results){
+                session_start();
+                foreach ($results as $result){
+                    $_SESSION['name'] = $result['name'];  
+                }
+                
+                header("Location: http://localhost/import-excel-php/public/");
+            }else{
+                die("Error:");
+            }
+            
+		} catch (\Exception $e) {
+            die("Error: ".$e);
+		}
+
+    }
+
+    public static function logout()
+    {
+        try{
+            session_start();
+            session_destroy();
             
 		} catch (\Exception $e) {
             die("Error: ".$e);

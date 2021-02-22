@@ -1,3 +1,7 @@
+<?php
+session_start();
+//(!isset($_SESSION['name']))? header('Location:http://localhost/import-excel-php/public/login'):'';
+?>
 <!doctype html>
 <html lang="en">
   <head>

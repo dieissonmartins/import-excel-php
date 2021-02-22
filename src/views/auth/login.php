@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-sm"></div>
         <div class="col-sm">
-            <form method="POST" action="http://localhost/import-excel-php/public/login">
+            <form method="POST" action="<?= $this->router->route("auth.login") ?>">
                 <h4 class="text-center">Login no Sistema</h4>
                 <div class="mb-3">
                     <label for="loginInputEmail" class="form-label">E-mail</label>

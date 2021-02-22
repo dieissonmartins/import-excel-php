@@ -21,7 +21,8 @@
                         
                         <div class="col-sm">
                             <div class="mb-3 p-3 float-right">
-                                <button type="button" class="btn btn-danger float-right" style="float: right;">Logout</button>
+                                <!--<p  style="float: right;">Login: Dieisson Martins</p>-->
+                                <a href="<?= $this->router->route("auth.logout") ?>" class="btn btn-danger float-right" style="float: right;">Logout</a>
                             </div>
                         </div>
                     </div>
@@ -47,7 +48,7 @@
                                             <td><?= $product['product_name'] ?></td>
                                             <td><?= "R$".number_format($product['price'], 2, ',', '') ?></td>
                                             <td><?= $product['inventory'] ?></td>
-                                            <td><?= date_format( date_create($product['date_fabrication']),"d/m/Y") ?></td>
+                                            <td><?= date_format( date_create($product['date_fabrication']),"d/  m/Y") ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
