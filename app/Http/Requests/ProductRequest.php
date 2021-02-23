@@ -31,8 +31,8 @@ class ProductRequest
             }
         }
 
-        //unset($data[1]);
+        unset($data[1]);
 
-        //return $data; 
+        return $data; 
     }
 }

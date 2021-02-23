@@ -33,18 +33,19 @@ class ProductController
                 die("Error: ".$e);
 		}
 
-        //return $this->router->redirect("product.index");
+        return $this->router->redirect("product.index");
     }
 
     public function destroy($id)
     {
         try{
             $product = ProductService::destroy($id);
-            //require_once __DIR__."/../../../src/views/admin/products/index.php";
 
 		} catch (\Exception $e) {
                 die("Error: ".$e);
 		}
+
+        return $this->router->redirect("product.index");
     }
 }
 ?>

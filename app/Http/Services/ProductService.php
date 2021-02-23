@@ -61,13 +61,14 @@ class ProductService
     public static function destroy($id)
     {
         try{
-           $sql        = "DELETE FROM tb_products WHERE ean =  $id";   
-           $product    = Connection::open()->exec($sql);
+            $productId = join('',$id);
+
+            $sql        = "DELETE FROM tb_products WHERE ean = '$productId'";   
+            $product    = Connection::open()->exec($sql);
 
 		} catch (\Exception $e) {
             die("Error: ".$e);
 		}
-
     }
 }
 ?>

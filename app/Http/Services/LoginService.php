@@ -24,12 +24,8 @@ class LoginService
                 foreach ($results as $result){
                     $_SESSION['name'] = $result['name'];  
                 }
-                
-                header("Location: http://localhost/import-excel-php/public/");
-            }else{
-                die("Error:");
             }
-            
+    
 		} catch (\Exception $e) {
             die("Error: ".$e);
 		}

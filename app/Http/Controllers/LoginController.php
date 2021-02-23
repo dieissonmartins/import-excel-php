@@ -13,8 +13,6 @@ class LoginController
     public function login()
     {
         try{
-            //$this->router->route("auth.login");
-
             require_once __DIR__."/../../../src/views/auth/login.php";
 
 		} catch (\Exception $e) {
@@ -30,6 +28,8 @@ class LoginController
 		} catch (\Exception $e) {
                 die("Error: ".$e);
 		}
+
+        return  $this->router->redirect("home.index");
     }
 
     public function logout()
