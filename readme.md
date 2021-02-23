@@ -29,4 +29,7 @@
     # Importar base de dados
     $ Abra o arquivo database.sql e execute o script no SGBD da base de dados configurada.
 
+    # Login
+    $ E-mail: dieisson.martins.santos@gmail.com 
+    $ Senha: 123456 
 ```
