@@ -1,0 +1,8 @@
+{
+  "name": "import-excel-php",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dieissonmartins/import-excel-php.git",
+  "author": "dieissonmartins <dieisson.martins.santos@gmail.com>",
+  "license": "MIT"
+}
